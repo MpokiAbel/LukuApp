@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "510378679990",
+    "firebase_url": "https://lukuapp-cb4c5.firebaseio.com",
+    "project_id": "lukuapp-cb4c5",
+    "storage_bucket": "lukuapp-cb4c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510378679990:android:0199bbe027d675ab74d017",
+        "android_client_info": {
+          "package_name": "com.example.lukuapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510378679990-jkoh81l0f2e7qadkeqej4d2oj7am9kds.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lukuapp",
+            "certificate_hash": "d05bef57537ba47a4493bb07f8e482d112ce033b"
+          }
+        },
+        {
+          "client_id": "510378679990-rbha839659ois61imublq9po2f1hhbsm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcM748txrYmh8PlAOssiFDva87cmwUrIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510378679990-rbha839659ois61imublq9po2f1hhbsm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
