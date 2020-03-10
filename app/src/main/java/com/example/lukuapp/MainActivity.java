@@ -3,6 +3,7 @@ package com.example.lukuapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                                     Intent intent = new Intent(MainActivity.this, Home.class);
                                     intent.putExtra("meter_no", number.getText().toString().trim());
                                     intent.putExtra("price",meter_details.get((int)i).current_price);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
 
                                 }

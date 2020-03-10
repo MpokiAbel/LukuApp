@@ -24,7 +24,11 @@
 
         <activity
             android:name=".bills"
-            android:label="Electricity Purchase History">
+            android:label="Electricity Purchase History"
+            android:parentActivityName=".Home">
+
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Home"/>
 
         </activity>
 

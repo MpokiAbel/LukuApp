@@ -92,6 +92,7 @@ public class Home extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent =new Intent(Home.this,bills.class);
             intent.putExtra("Meter_Number",meterno);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
     });
@@ -133,7 +134,7 @@ public class Home extends AppCompatActivity {
         String meterno=intent.getStringExtra("meter_no");
 
         if (value<price) {
-            Toast.makeText(this,"You dont have enough Funds",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"You dont have enough Funds",Toast.LENGTH_LONG).show();
         }
 
         else{
@@ -148,6 +149,17 @@ public class Home extends AppCompatActivity {
             myRef.child(id).setValue(bill);
 
         }
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+
 
     }
 }

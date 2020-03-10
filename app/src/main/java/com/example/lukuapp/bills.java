@@ -30,11 +30,17 @@ public class bills extends AppCompatActivity {
     Intent intent;
     String meterno;
     TextView myText;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bills);
+
+        progressDialog =new ProgressDialog(bills.this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Fetching data");
+        progressDialog.show();
 
         myText= findViewById(R.id.nohistoryText);
 
@@ -48,6 +54,7 @@ public class bills extends AppCompatActivity {
         billlist=new ArrayList<>();
 
 
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -55,14 +62,21 @@ public class bills extends AppCompatActivity {
 
                 billlist.clear();
 
+
+
                 for(DataSnapshot mysnapshot : dataSnapshot.getChildren()){
 
                     Bill bill =mysnapshot.getValue(Bill.class);
                     billlist.add(bill);
+
                 }
 
                 list_of_bills adapter =new list_of_bills(bills.this,billlist,meterno);
+
                 listview.setAdapter(adapter);
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
+
 
             }
 
@@ -75,4 +89,6 @@ public class bills extends AppCompatActivity {
 
 
     }
+
+
 }

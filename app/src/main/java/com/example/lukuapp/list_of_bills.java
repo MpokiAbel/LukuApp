@@ -43,10 +43,7 @@ public list_of_bills(Activity context,List<Bill> billList,String meter){
 
         LinearLayout layout=listItems.findViewById(R.id.myLinearLayout);
 
-        ProgressDialog progressDialog =new ProgressDialog(context);
-        progressDialog.setTitle("Loading");
-        progressDialog.setMessage("Fetching data");
-        progressDialog.show();
+
         
         Bill bill =billList.get(position);
 
