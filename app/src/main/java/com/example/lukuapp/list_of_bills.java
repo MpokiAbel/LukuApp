@@ -67,8 +67,6 @@ public list_of_bills(Activity context,List<Bill> billList,String meter){
 
 
         }
-        else
-            myB.myText.setText("No History!!");
 
 
     return listItems;

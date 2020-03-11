@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -37,6 +38,7 @@ public class bills extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bills);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         progressDialog =new ProgressDialog(bills.this);
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Fetching data");
@@ -74,6 +76,10 @@ public class bills extends AppCompatActivity {
                 list_of_bills adapter =new list_of_bills(bills.this,billlist,meterno);
 
                 listview.setAdapter(adapter);
+
+                myRef=database.getReference("Bills").child(meterno);
+                if (dataSnapshot.getChildrenCount()==0)
+                    myText.setText("No history");
                 if (progressDialog.isShowing())
                     progressDialog.dismiss();
 
@@ -87,8 +93,13 @@ public class bills extends AppCompatActivity {
         });
 
 
-
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        onBackPressed();
+        return true;
+
+    }
 
 }

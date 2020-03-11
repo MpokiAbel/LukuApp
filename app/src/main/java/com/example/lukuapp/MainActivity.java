@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     List<Meter>meter_details;
     FirebaseDatabase database;
     DatabaseReference myRef;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                progressDialog =new ProgressDialog(MainActivity.this);
+                progressDialog.setTitle("Loading");
+                progressDialog.setMessage("Logging In");
+                progressDialog.show();
                 myRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -59,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                                 if (number.getText().toString().equals(String.valueOf(meter_details.get((int) i).meter_no))){
-
+                                    progressDialog.dismiss();
                                     Intent intent = new Intent(MainActivity.this, Home.class);
                                     intent.putExtra("meter_no", number.getText().toString().trim());
                                     intent.putExtra("price",meter_details.get((int)i).current_price);
@@ -68,7 +74,13 @@ public class MainActivity extends AppCompatActivity {
 
                                 }
                                 else if(number.getText().toString().isEmpty() || number.getText().toString().length()!=11) {
+                                    progressDialog.dismiss();
                                     number.setError("Enter Correct Meter Number");
+                                }else
+
+                                    {
+                                    progressDialog.dismiss();
+                                    number.setError("No such Meter Number");
                                 }
 
                             }
